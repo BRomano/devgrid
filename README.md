@@ -14,6 +14,7 @@
 * Also I have used flasgger for documentation, it can be seen on /apidocs
 * And pycountry to convert country ISO 3166-1 Alpha 2 to Alpha 3
 
+The application was deployed on [API](http://159.223.180.98:8080/apidocs/)
 > To run automated tests
 ````shell
 pytest

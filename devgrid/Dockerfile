@@ -1,7 +1,7 @@
 FROM python:3.8.5-alpine
 
 ENV HOME=/home/app/
-ENV APP_HOME=/home/app/interview/
+ENV APP_HOME=/home/app/devgrid/
 
 # Create directory for the app user
 RUN mkdir -p $HOME $APP_HOME
