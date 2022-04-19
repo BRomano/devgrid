@@ -53,7 +53,7 @@ class DevConfig(BaseConfig):
 
     #Cache
     CACHE_TYPE = os.getenv('CACHE_TYPE') or 'SimpleCache'
-    CACHE_DEFAULT_TIMEOUT = int(os.getenv('CACHE_DEFAULT_TIMEOUT', 360))
+    CACHE_DEFAULT_TIMEOUT = int(os.getenv('DEFAULT_CACHE_TTL', 5 * 60))
     CACHE_SOURCE_CHECK = True
     if CACHE_TYPE == 'RedisCache':
         CACHE_REDIS_HOST = os.getenv('CACHE_REDIS_HOST')
@@ -62,4 +62,6 @@ class DevConfig(BaseConfig):
 
 
     #Application envs
+    OPEN_WEATHER_MAP_KEY = os.getenv('OPEN_WEATHER_MAP_KEY')
     DEFAULT_MAX_NUMBER = os.getenv('DEFAULT_MAX_NUMBER', 5)
+    DEFAULT_CACHE_TTL = CACHE_DEFAULT_TIMEOUT
