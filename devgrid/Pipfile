@@ -17,10 +17,12 @@ wheel = "==0.36.2"
 flasgger = "*"
 requests = "==2.20.1"
 schematics = "*"
+pycountry = "*"
 
 [dev-packages]
 pytest = "==6.2.3"
 pytest-flask = "==1.2.0"
+coverage = "*"
 
 [requires]
 python_version = "3.8"

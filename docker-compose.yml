@@ -12,10 +12,13 @@ services:
       - DEBUG=True
       - APP_LONG_NAME="Interview Test"
       - SECRET_KEY=brunoromano
+      - OPEN_WEATHER_MAP_KEY=faaa4db2caf0f9b313de58597b797fba
+      - DEFAULT_CACHE_TTL=300
+      - DEFAULT_MAX_NUMBER=5
   proxy:
     build: front
     restart: always
     ports:
-      - 80:80
+      - 8080:80
     depends_on:
       - devgrid

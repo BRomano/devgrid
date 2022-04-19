@@ -12,4 +12,3 @@ class TemperatureEntry(Model):
     city_name = StringType(required=True)
     city_country = StringType(required=True)
     requested_at = DateTimeType(default=datetime.utcnow())
-    cached_data = BooleanType(default=False)
