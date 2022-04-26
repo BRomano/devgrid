@@ -60,7 +60,7 @@ def _fetch_city_data(city_name: str) -> dict:
         _city_data = _get_city_data_from_api(city_name)
         cache.cache.set(city_name, _city_data)
 
-    _city_data['cached_data'] = is_data_cached
+    _city_data['cached_data'] = bool(is_data_cached)
 
     cities_index = set()
     if cache.cache.has('cities_index'):

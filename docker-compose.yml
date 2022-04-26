@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-#  cache:
-#    image: redis:6.2.6-alpine
-#    command: redis-server --requirepass !Mudar123
-#    restart: always
-#    ports:
-#      - 6379
+  cache:
+    image: redis:6.2.6-alpine
+    command: redis-server --requirepass !Mudar123
+    restart: always
+    ports:
+      - 6379
   devgrid:
     build: devgrid
-    command: gunicorn --workers 1 --bind 0.0.0.0:5000 "devgrid:create_app('DevConfig')" --max-requests 10000 --timeout 5 --keep-alive 5 --log-level info
+    command: gunicorn --workers 4 --bind 0.0.0.0:5000 "devgrid:create_app('DevConfig')" --max-requests 10000 --timeout 5 --keep-alive 5 --log-level info
     restart: always
     ports:
       - 5000
@@ -21,13 +21,13 @@ services:
       - OPEN_WEATHER_MAP_KEY=faaa4db2caf0f9b313de58597b797fba
       - DEFAULT_CACHE_TTL=300
       - DEFAULT_MAX_NUMBER=5
-#      - CACHE_TYPE=Redis
-#      - CACHE_REDIS_HOST=cache
-#      - CACHE_REDIS_PORT=6379
-#      - CACHE_REDIS_PASSWORD=!Mudar123
-#      - CACHE_REDIS_URL=redis://cache:6379
-#    depends_on:
-#      - cache
+      - CACHE_TYPE=RedisCache
+      - CACHE_REDIS_HOST=cache
+      - CACHE_REDIS_PORT=6379
+      - CACHE_REDIS_PASSWORD=!Mudar123
+      - CACHE_REDIS_URL=redis://cache:6379
+    depends_on:
+      - cache
   proxy:
     build: front
     restart: always
