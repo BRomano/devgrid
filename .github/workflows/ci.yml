@@ -43,6 +43,7 @@ jobs:
     - name: Tests
       env:
         OPEN_WEATHER_MAP_KEY: ${{ secrets.OPEN_WEATHER_MAP_KEY }}
+        DEFAULT_CACHE_TTL: ${{ secrets.DEFAULT_CACHE_TTL }}
       run: |
         coverage run -m pytest
 
