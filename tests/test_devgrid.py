@@ -73,9 +73,9 @@ def test_get_cached_max(client, max_number, cities):
 
 @pytest.mark.parametrize("max_number, cities, not_expired_cities, sleep_to_expire", [
     (3, 'Dijon,Lyon,London', 'Dijon,Lyon,London', 1), # SHould retrieve everything
-    (3, 'Dijon,Lyon,London', 'Lyon,London', 10), # expired one
-    (3, 'Dijon,Lyon,London', 'London', 12), # expired 2
-    (3, 'Dijon,Lyon,London', '', 14), # everything were expired
+    (3, 'Dijon,Lyon,London', 'Lyon,London', 11), # expired one
+    (3, 'Dijon,Lyon,London', 'London', 13), # expired 2
+    (3, 'Dijon,Lyon,London', '', 15), # everything were expired
     (5, 'Carballo,Curitiba,London,Omaha,Santiago,Montevideo','London,Omaha,Santiago,Montevideo', 4),
 ])
 def test_get_cached_expire(client, max_number, cities, not_expired_cities, sleep_to_expire):
@@ -103,60 +103,3 @@ def test_get_cached_expire(client, max_number, cities, not_expired_cities, sleep
         returned_cities = [o.get('city_name') for o in json_data]
         for city in not_expired_cities.split(','):
             assert city in returned_cities
-
-
-logs1 = [
-    ["58523", "user_1", "resource_1"],
-    ["62314", "user_2", "resource_2"],
-    ["54001", "user_1", "resource_3"],
-    ["200", "user_6", "resource_5"],
-    ["215", "user_6", "resource_4"],
-    ["54060", "user_2", "resource_3"],
-    ["53760", "user_3", "resource_3"],
-    ["58522", "user_22", "resource_1"],
-    ["53651", "user_5", "resource_3"],
-    ["2", "user_6", "resource_1"],
-    ["100", "user_6", "resource_6"],
-    ["400", "user_7", "resource_2"],
-    ["100", "user_8", "resource_6"],
-    [ "54359", "user_1", "resource_3"],
-]
-
-
-def time_calc(time, window):
-    time_window = [time]
-    for t in window:
-        _diff = abs(time - t)
-        print(f'{time} - {t} = {_diff}')
-        if _diff != 0 and _diff <= 300:
-            time_window.append(t)
-
-    return time_window
-
-
-def test_xxx():
-    window_1 = {}
-    window = []
-
-    for log in logs1:
-        if log[2] not in window_1:
-            window_1[log[2]] = {'values': [int(log[0])]}
-        else:
-            window_1[log[2]].get('values').append(int(log[0]))
-
-    for resource in window_1:
-        for time in window_1[resource].get('values'):
-            window.append({
-                'resource': resource,
-                'array': time_calc(time, window_1[resource].get('values'))})
-
-    print(f'window = {window}')
-    key_one = {'array': []}
-    key_one_max_value = 0
-    for r in window:
-        max_value = max(len(r.get('array')), len(key_one.get('array')))
-        if max_value > key_one_max_value:
-            key_one_max_value = max_value
-            key_one = r
-
-    return key_one
