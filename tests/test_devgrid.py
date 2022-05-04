@@ -73,8 +73,8 @@ def test_get_cached_max(client, max_number, cities):
 
 @pytest.mark.parametrize("max_number, cities, not_expired_cities, sleep_to_expire", [
     (3, 'Dijon,Lyon,London', 'Dijon,Lyon,London', 1), # SHould retrieve everything
-    (3, 'Dijon,Lyon,London', 'Lyon,London', 11), # expired one
-    (3, 'Dijon,Lyon,London', 'London', 13), # expired 2
+    (3, 'Dijon,Lyon,London', 'Lyon,London', 12), # expired one
+    (3, 'Dijon,Lyon,London', 'London', 14), # expired 2
     (3, 'Dijon,Lyon,London', '', 15), # everything were expired
     (5, 'Carballo,Curitiba,London,Omaha,Santiago,Montevideo','London,Omaha,Santiago,Montevideo', 4),
 ])
