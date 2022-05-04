@@ -42,16 +42,16 @@ class DevConfig(BaseConfig):
 
     SECRET_KEY = os.getenv('SECRET_KEY') or 'SECRET_KEY'
 
-    #Open API
+    # Open API
     SWAGGER = {
         "title": "Interview bycoders",
         "uiversion": 3,
     }
 
-    #CORS
+    # CORS
     CORS_SUPPORTS_ORIGIN = os.getenv('CORS_SUPPORTS_ORIGIN', '*')
 
-    #Cache
+    # Cache
     CACHE_TYPE = os.getenv('CACHE_TYPE') or 'SimpleCache'
     CACHE_DEFAULT_TIMEOUT = int(os.getenv('DEFAULT_CACHE_TTL', 5 * 60))
     CACHE_SOURCE_CHECK = True
@@ -60,8 +60,7 @@ class DevConfig(BaseConfig):
         CACHE_REDIS_PORT = os.getenv('CACHE_REDIS_PORT')
         CACHE_REDIS_PASSWORD = os.getenv('CACHE_REDIS_PASSWORD')
 
-
-    #Application envs
+    # Application envs
     OPEN_WEATHER_MAP_KEY = os.getenv('OPEN_WEATHER_MAP_KEY')
     DEFAULT_MAX_NUMBER = os.getenv('DEFAULT_MAX_NUMBER', 5)
     DEFAULT_CACHE_TTL = CACHE_DEFAULT_TIMEOUT

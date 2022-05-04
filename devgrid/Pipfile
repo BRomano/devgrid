@@ -24,6 +24,7 @@ redis = "*"
 pytest = "==6.2.3"
 pytest-flask = "==1.2.0"
 coverage = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.8"

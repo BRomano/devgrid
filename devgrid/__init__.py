@@ -1,4 +1,3 @@
-import os
 from flask import Flask
 
 from flasgger import Swagger
@@ -18,9 +17,9 @@ def create_app(config_class='DevConfig'):
     app.config.from_object(cfg)
     app.config['CONFIG_CLASS'] = config_class
 
-    cors = CORS(app, origins='{0}'.format(app.config.get('CORS_SUPPORTS_ORIGIN'))
-                , allow_headers=['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials']
-                , methods=['GET', 'POST', 'DELETE']
+    cors = CORS(app, origins='{0}'.format(app.config.get('CORS_SUPPORTS_ORIGIN'))  # noqa: F841,E203
+                , allow_headers=['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials']  # noqa: E203
+                , methods=['GET', 'POST', 'DELETE']  # noqa: E203
                 , supports_credentials=True)
 
     cache.init_app(app)
@@ -37,7 +36,7 @@ def create_app(config_class='DevConfig'):
     swagger_config["static_url_path"] = "/flasgger_static"
     swagger_config["swagger_ui"] = True
     swagger_config["specs_route"] = "/apidocs/"
-    swag = Swagger(app, config=swagger_config)
+    swag = Swagger(app, config=swagger_config)  # noqa: F841
 
     init_routes(app)
 

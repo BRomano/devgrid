@@ -1,5 +1,5 @@
 from schematics.models import Model
-from schematics.types import StringType, DateTimeType, DecimalType, BooleanType
+from schematics.types import StringType, DateTimeType, DecimalType
 
 from datetime import datetime
 
