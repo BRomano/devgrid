@@ -1,5 +1,7 @@
 # devgrid
 
+[![Pylint](https://github.com/BRomano/devgrid/actions/workflows/pylint.yml/badge.svg)](https://github.com/BRomano/devgrid/actions/workflows/pylint.yml)
+
 ## 
 
 * I have used all technologies you asked to be used
