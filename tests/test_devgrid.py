@@ -1,6 +1,7 @@
 import pytest
 import time
 
+
 @pytest.mark.parametrize("city_name, status_code, country", [
     ('Curitiba', 200, 'BRA'),
     ('London', 200, 'GBR'),
@@ -16,8 +17,10 @@ import time
 ])
 def test_get_city_country(client, city_name, status_code, country):
     res = client.get(f'/temperature/{city_name}')
-    assert res.status_code == status_code
     json_data = res.get_json()
+    if 'message' in json_data:
+        print(json_data.get('message'))
+    assert res.status_code == status_code
     if res.status_code == 200:
         assert json_data.get('city_name') == city_name
         assert json_data.get('city_country') == country

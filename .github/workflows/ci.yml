@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.8"]
+        python-version: ["3.8.5"]
 
     steps:
     - name: Checkout Code
@@ -40,7 +40,7 @@ jobs:
         # exit-zero treats all errors as warnings.
         flake8 devgrid --count --exit-zero --max-complexity=10 --statistics
 
-    - name: Test with pytest
+    - name: Tests
       run: |
         coverage run -m pytest
 
