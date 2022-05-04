@@ -30,7 +30,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install pipenv
-        python -m pipenv install --system
+        pipenv install --system
 
     - name: Lint with flake8
       run: |
