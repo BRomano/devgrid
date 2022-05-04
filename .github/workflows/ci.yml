@@ -41,6 +41,8 @@ jobs:
         flake8 devgrid --count --exit-zero --max-complexity=10 --statistics
 
     - name: Tests
+      env:
+        OPEN_WEATHER_MAP_KEY: faaa4db2caf0f9b313de58597b797fba
       run: |
         coverage run -m pytest
 
