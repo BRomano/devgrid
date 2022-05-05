@@ -43,11 +43,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build container image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
           context: ./devgrid
           push: true
-          tags: BRomano/back:latest
-          secrets: |
-            GIT_AUTH_TOKEN=${{ github.token }}
+          tags: bromano/back:latest
