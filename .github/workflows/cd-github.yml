@@ -48,4 +48,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           context: ./devgrid
           push: true
-          tags: devgrid/back:latest
+          tags: BRomano/back:latest
+          secrets: |
+            GIT_AUTH_TOKEN=${{ github.token }}
