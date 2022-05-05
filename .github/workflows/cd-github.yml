@@ -1,13 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CD
+name: cd-github
 
 # 1
 # Control when this workflow will be triggered...
 # Just when CI runs successfully, and a push to main
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ["ci"]
     types: [completed]
     branches: [ main ]
 
