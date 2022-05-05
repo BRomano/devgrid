@@ -48,6 +48,6 @@ jobs:
       - name: Build container image
         uses: docker/build-push-action@v3
         with:
-          context: ./devgrid
+          context: "{{defaultContext}}:devgrid"
           push: true
           tags: devgrid/back:latest
