@@ -58,4 +58,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/bromano/devgrid:latest
+          tags: ghcr.io/bromano/devgrid:latest,ghcr.io/bromano/devgrid:v-1
