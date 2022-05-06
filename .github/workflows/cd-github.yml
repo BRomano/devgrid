@@ -23,14 +23,13 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
-permissions:
-  packages: write
-  contents: read
-
 #3 jobs
 jobs:
   build_push:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
 
     steps:
       - name: Checkout the repo
@@ -44,8 +43,8 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-#          password: ${{ secrets.GITHUB_TOKEN }}
-          password: ${{ secrets.PACKAGE_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          #password: ${{ secrets.PACKAGE_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
