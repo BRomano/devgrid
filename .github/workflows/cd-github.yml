@@ -27,6 +27,7 @@ env:
 jobs:
   build_push:
     runs-on: ubuntu-latest
+    permissions: read-all|write-all
 
     steps:
       - name: Checkout the repo
