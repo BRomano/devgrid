@@ -47,14 +47,15 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
-        uses: actions/github-script@v4
+        id: meta
+        uses: docker/metadata-action@v4
         with:
-          result-encoding: string
-          script: return 'ghcr.io/${{ github.repository }}'.toLowerCase()
+          images: ghcr.io/${{ github.repository }}
+          tags: latest
 
       - name: Build container image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ${{ steps.repo_slug.outputs.result }}:latest
+          tags: ghcr.io/user/app:latest
