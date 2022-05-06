@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+basedir = os.getcwd()
 
 
 def _str_to_bool(s):
