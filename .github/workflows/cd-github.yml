@@ -43,7 +43,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
@@ -57,5 +57,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: true
-          tags: ghcr.io/bromano/devgrid:latest,ghcr.io/bromano/devgrid:v-1
+          push: false
+          tags: |
+          devgrid:latest
+          devgrid:v-1
